@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1ff146_84a9147e",
+        "filename": "MANIFEST.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 10420
+      },
+      "writtenOn": "2017-03-16T05:24:41Z",
+      "side": 1,
+      "message": "won\u0027t grab the templates and static files",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 35
+      },
+      "revId": "45c90b96959f6e3156e3337d05f27346a07b91c6",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
