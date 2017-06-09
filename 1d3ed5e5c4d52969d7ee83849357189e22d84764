@@ -16,6 +16,24 @@
       "revId": "1d3ed5e5c4d52969d7ee83849357189e22d84764",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f0e0f27_a6f9784e",
+        "filename": "distil_ui/test/api_tests/rest_api_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 6484
+      },
+      "writtenOn": "2017-06-09T10:19:01Z",
+      "side": 1,
+      "message": "Please stop -1 without meaningful comments or just tell me what I missed. Thanks.",
+      "parentUuid": "9f0e0f27_066ca434",
+      "revId": "1d3ed5e5c4d52969d7ee83849357189e22d84764",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
