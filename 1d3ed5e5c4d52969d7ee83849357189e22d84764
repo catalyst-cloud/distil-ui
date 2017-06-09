@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f0e0f27_066ca434",
+        "filename": "distil_ui/test/api_tests/rest_api_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 19930
+      },
+      "writtenOn": "2017-06-09T10:14:16Z",
+      "side": 1,
+      "message": "I think you should read more about this function [1] to have right FakeRequest.\n\n[1] https://github.com/openstack/distil-ui/blob/master/distil_ui/api/distil.py#L89",
+      "revId": "1d3ed5e5c4d52969d7ee83849357189e22d84764",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
