@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f1a1f67_bd4a837d",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 6484
+      },
+      "writtenOn": "2017-07-13T02:17:47Z",
+      "side": 1,
+      "message": "Why do we still have to call /invoices API 11 times? Now the new /invoices API can return the total cost of history by one call.",
+      "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
