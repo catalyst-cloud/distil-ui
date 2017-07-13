@@ -16,6 +16,24 @@
       "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1a1f67_79c5168e",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 26263
+      },
+      "writtenOn": "2017-07-13T08:16:23Z",
+      "side": 1,
+      "message": "It\u0027s only calls the api for invoices once on line 181.\n\nThis for loop is going through the returned dictionary and assigning the total cost of each invoice to a place in the history cost list. (The for loop on line 184 goes transforms the initally returned dictionary (\u0027invoices\u0027) first that dictionary first and transforms the keys so that they are a (year, month) tuple rather than a string to make access to it easier (\u0027sorted_invoices\u0027)).",
+      "parentUuid": "1f1a1f67_bd4a837d",
+      "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
     }
   ]
 }
