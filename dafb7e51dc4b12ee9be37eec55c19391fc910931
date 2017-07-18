@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f1a1f67_249b7766",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 6484
+      },
+      "writtenOn": "2017-07-18T03:46:17Z",
+      "side": 1,
+      "message": "I\u0027m testing this and this call doesn\u0027t work for me. You\u0027re passing in datetime format, and it will be parsed as format \"2017-01-01 00:00:00\", but currently Distil can\u0027t handle this. See https://github.com/openstack/distil/blob/master/distil/common/general.py#L126",
+      "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1a1f67_bd4a837d",
         "filename": "distil_ui/api/distil_v2.py",
         "patchSetId": 6
@@ -49,6 +66,23 @@
       "side": 1,
       "message": "Ah， I see. Thanks for the clarification. I will give it try. Thanks.",
       "parentUuid": "1f1a1f67_79c5168e",
+      "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1a1f67_c4a9637c",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 6484
+      },
+      "writtenOn": "2017-07-18T03:46:17Z",
+      "side": 1,
+      "message": "I\u0027m using Ocata horizon, same version as we\u0027re running on production. And I got error:\n\n\u003e /home/feilong/MyWorkSpace/workspace_community/distil-ui/distil_ui/api/distil_v2.py(210)get_cost()\n-\u003e regions \u003d identity.regions.list()\n(Pdb) identity.regions.list()\n*** AttributeError: Unknown Attribute: regions",
       "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
