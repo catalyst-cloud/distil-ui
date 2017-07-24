@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff346bd7_36d7c7c2",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 26263
+      },
+      "writtenOn": "2017-07-24T04:18:30Z",
+      "side": 1,
+      "message": "My apologies for this I created a patch to allow the client to handle this (as it made more sense to me to do the formatting at the client), unfortunately I forgot to upload this. I will upload this patch. (I also made some changes to allow for the detailed param a patch for which you have uploaded so I will rebase it on top of that as both are required for this panel to function).",
+      "parentUuid": "1f1a1f67_249b7766",
+      "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1a1f67_bd4a837d",
         "filename": "distil_ui/api/distil_v2.py",
         "patchSetId": 6
@@ -83,6 +101,24 @@
       "writtenOn": "2017-07-18T03:46:17Z",
       "side": 1,
       "message": "I\u0027m using Ocata horizon, same version as we\u0027re running on production. And I got error:\n\n\u003e /home/feilong/MyWorkSpace/workspace_community/distil-ui/distil_ui/api/distil_v2.py(210)get_cost()\n-\u003e regions \u003d identity.regions.list()\n(Pdb) identity.regions.list()\n*** AttributeError: Unknown Attribute: regions",
+      "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff346bd7_11b84d28",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 26263
+      },
+      "writtenOn": "2017-07-24T04:18:30Z",
+      "side": 1,
+      "message": "I have tested this with ocata horizon (stable branch pulled from openstack github and new env built with tox) just now and I could not replicate this issue. The same function call is used in distil itself",
+      "parentUuid": "1f1a1f67_c4a9637c",
       "revId": "dafb7e51dc4b12ee9be37eec55c19391fc910931",
       "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
       "unresolved": false
