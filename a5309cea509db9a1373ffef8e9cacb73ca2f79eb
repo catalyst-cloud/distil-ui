@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f515b1d_2cc1a555",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 6732
+      },
+      "writtenOn": "2017-09-24T22:13:03Z",
+      "side": 1,
+      "message": "soft: region can be retrieved by splitting the string with \u0027.\u0027",
+      "revId": "a5309cea509db9a1373ffef8e9cacb73ca2f79eb",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f515b1d_0cddc941",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 6732
+      },
+      "writtenOn": "2017-09-24T22:13:03Z",
+      "side": 1,
+      "message": "+\u003d ?",
+      "range": {
+        "startLine": 184,
+        "startChar": 28,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "a5309cea509db9a1373ffef8e9cacb73ca2f79eb",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f515b1d_4c2e2144",
+        "filename": "distil_ui/api/distil_v2.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 6732
+      },
+      "writtenOn": "2017-09-24T22:13:03Z",
+      "side": 1,
+      "message": "I wonder how we get regions in the dropdown list after users log in?",
+      "range": {
+        "startLine": 196,
+        "startChar": 32,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "a5309cea509db9a1373ffef8e9cacb73ca2f79eb",
+      "serverId": "4a232e18-c5a9-48ee-94c0-e04e7cca6543",
+      "unresolved": false
+    }
+  ]
+}
