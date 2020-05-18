@@ -12,6 +12,4 @@ Babel>=2.3.4,!=2.4.0 # BSD
 Django>=1.8,<2.0 # BSD
 django-babel>=0.5.1 # BSD
 
-# NOTE(flwang): We can use this after distilclient is added into
-# openstack-requirements.
-#python-distilclient>=0.3.2 # Apache-2.0
+python-distilclient>=0.3.2 # Apache-2.0
