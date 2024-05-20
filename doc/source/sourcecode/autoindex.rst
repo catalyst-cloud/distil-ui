@@ -26,10 +26,11 @@ Distil_ui
    distil_ui/distil_ui.api
    distil_ui/distil_ui.enabled._6010_management_billing
    distil_ui/distil_ui.enabled
-   distil_ui/distil_ui.test.helpers
-   distil_ui/distil_ui.test.test_data
-   distil_ui/distil_ui.test.settings
-   distil_ui/distil_ui.test
-   distil_ui/distil_ui.test.integration_tests
-   distil_ui/distil_ui.test.api_tests
-   distil_ui/distil_ui.test.api_tests.rest_api_tests
+   distil_ui/distil_ui.tests
+   distil_ui/distil_ui.tests.api
+   distil_ui/distil_ui.tests.api.test_distil_v2
+   distil_ui/distil_ui.tests.content
+   distil_ui/distil_ui.tests.content.billing
+   distil_ui/distil_ui.tests.content.billing.test_views
+   distil_ui/distil_ui.tests.helpers
+   distil_ui/distil_ui.tests.settings

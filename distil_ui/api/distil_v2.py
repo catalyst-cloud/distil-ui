@@ -1,14 +1,15 @@
-# Copyright (c) 2014 Catalyst IT Ltd.
+# Copyright (C) 2017-2024 Catalyst Cloud Limited
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#    http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -93,56 +94,67 @@ def _wash_details(current_details):
     rate_network = 0
 
     for u in current_details["details"]:
-        # FIXME(flwang): 8 is the magic number here, we need a better way
-        # to get the region name.
-        region = u["product"].split(".")[0]
+        # TODO(callumdickinson): Make network and router product names
+        # configurable.
         if u['product'].endswith('n1.network'):
+            region = u["product"][0:-len(".n1.network")]
             network_hours[region] += u['quantity']
             rate_network = u['rate']
 
         if u['product'].endswith('n1.router'):
+            region = u["product"][0:-len(".n1.router")]
             router_hours[region] += u['quantity']
             rate_router = u['rate']
 
+        # TODO(callumdickinson): Make object storage handling more generic.
         if u['product'].endswith('o1.standard'):
             swift_usage[u['resource_id']].append(u)
         else:
             washed_details.append(u)
 
     total_free_router_network_cost = 0
-    free_network_hours_left = free_hours
-    for region, hours in six.iteritems(network_hours):
-        free_network_hours = (hours if hours <= free_network_hours_left
-                              else free_network_hours_left)
-        if not free_network_hours:
-            break
-        line_name = 'Free Network Tier in %s' % region
-        cost = round(free_network_hours * -rate_network, 2)
-        total_free_router_network_cost += cost
-        washed_details.append({'product': region + '.n1.network',
-                               'resource_name': line_name,
-                               'quantity': free_network_hours,
-                               'resource_id': '',
-                               'unit': 'hour', 'rate': -rate_network,
-                               'cost': cost})
-        free_network_hours_left -= free_network_hours
 
-    free_router_hours_left = free_hours
-    for region, hours in six.iteritems(router_hours):
-        free_router_hours = (hours if hours <= free_router_hours_left
-                             else free_router_hours_left)
-        if not free_router_hours:
-            break
-        line_name = 'Free Router Tier in %s' % region
-        cost = round(free_router_hours * -rate_router, 2)
-        total_free_router_network_cost += cost
-        washed_details.append({'product': region + '.n1.router',
-                               'resource_name': line_name,
-                               'quantity': free_router_hours,
-                               'resource_id': '',
-                               'unit': 'hour', 'rate': -rate_router,
-                               'cost': cost})
-        free_router_hours_left -= free_router_hours
+    if getattr(settings, 'DISTIL_PRODUCTS_ENABLE_FREE_NETWORKS', True):
+        free_network_regions = getattr(
+            settings,
+            'DISTIL_PRODUCTS_FREE_NETWORK_REGIONS',
+            [],
+        )
+        for region, hours in six.iteritems(network_hours):
+            if free_network_regions and region not in free_network_regions:
+                continue
+            free_network_hours = min(hours, free_hours)
+            line_name = 'Free Network Tier in %s' % region
+            cost = round(free_network_hours * -rate_network, 2)
+            total_free_router_network_cost += cost
+            washed_details.append({'product': region + '.n1.network',
+                                   'resource_name': line_name,
+                                   'quantity': free_network_hours,
+                                   'resource_id': '',
+                                   'unit': 'hour', 'rate': -rate_network,
+                                   'cost': cost})
+
+    if getattr(settings, 'DISTIL_PRODUCTS_ENABLE_FREE_ROUTERS', True):
+        free_router_regions = getattr(
+            settings,
+            'DISTIL_PRODUCTS_FREE_ROUTER_REGIONS',
+            [],
+        )
+        for region, hours in six.iteritems(router_hours):
+            if free_router_regions and region not in free_router_regions:
+                continue
+            free_router_hours = min(hours, free_hours)
+            if not free_router_hours:
+                break
+            line_name = 'Free Router Tier in %s' % region
+            cost = round(free_router_hours * -rate_router, 2)
+            total_free_router_network_cost += cost
+            washed_details.append({'product': region + '.n1.router',
+                                   'resource_name': line_name,
+                                   'quantity': free_router_hours,
+                                   'resource_id': '',
+                                   'unit': 'hour', 'rate': -rate_router,
+                                   'cost': cost})
 
     region_count = 0
     for container, container_usage in swift_usage.items():
@@ -215,7 +227,12 @@ def _parse_quotation(quotation, merged_quotations, region=None):
 
 def _get_quotations(request):
     LOG.debug("Start to get quotations from all regions.")
-    today_date = datetime.date.today().strftime("%Y-%m-%d")
+    # NOTE(michaelball): Quotations returns a single collection,
+    # keyed by UTC date. So we use UTC here to check. This means that
+    # reqs sent before UTC midnight and received after will still fail,
+    # but this is considered a minimal edge case
+    # (a few second per day, at most, and fixed by refreshing).
+    today_date = datetime.datetime.utcnow().strftime("%Y-%m-%d")
     regions = request.user.available_services_regions
 
     merged_quotations = {"total_cost": 0, "breakdown": {}, "details": [],
@@ -225,7 +242,8 @@ def _get_quotations(request):
         region_client = distilclient(request, region_id=region)
         resp = region_client.quotations.list(detailed=True)
         quotation = resp['quotations'][today_date]
-        merged_quotations = _parse_quotation(quotation, merged_quotations,
+        merged_quotations = _parse_quotation(quotation,
+                                             merged_quotations,
                                              region)
 
     merged_quotations = _wash_details(merged_quotations)

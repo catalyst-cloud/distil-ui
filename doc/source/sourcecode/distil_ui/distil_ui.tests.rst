@@ -1,7 +1,7 @@
 ================================
-The :mod:`distil_ui.test` Module
+The :mod:`distil_ui.tests` Module
 ================================
-.. automodule:: distil_ui.test
+.. automodule:: distil_ui.tests
   :members:
   :undoc-members:
   :show-inheritance:

@@ -32,6 +32,7 @@ bin/pybabel
 bin/python
 bin/python2
 bin/python2.7
+.coverage
 .project
 .pydevproject
 .testrepository/
@@ -39,8 +40,10 @@ bin/python2.7
 .venv/
 bin/logs/
 bin/waitress-serve
+cover/
 local/
 test_vm/
 env/
 ChangeLog
 .idea
+.vscode
